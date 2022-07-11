@@ -16,7 +16,7 @@ public:
         ListNode *slow = head;
         ListNode *fast = head;
         
-        while(fast!=NULL) {
+        while(fast) {
             slow = slow->next;
             fast = fast->next;
             if(fast == NULL)
@@ -25,9 +25,8 @@ public:
         }
         
         ListNode *ptr2 = reverse(slow);
-        // cout<<ptr2->val<<endl;
         ListNode *ptr1 = head;
-        while(ptr2!=NULL) {
+        while(ptr2) {
             if(ptr1->val != ptr2->val)
                 return false;
             ptr1 = ptr1->next;
