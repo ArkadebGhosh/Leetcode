@@ -7,7 +7,6 @@ public:
             freq[s.at(i) - 'a']++;
         map<int, int> m;
         for(auto &it: freq) {
-            // cout<<it<<endl;
             if(!m.count(it))
                 m[it] = 1;
             else
@@ -18,7 +17,6 @@ public:
         for(it = m.rbegin(); it!=m.rend(); it++) {
             int freq = it->first;
             int nchars = it->second;
-            // cout<<freq<<" "<<nchars<<endl;
             if(freq == 0)
                 break;
             deletions += max(0, nchars - 1);
