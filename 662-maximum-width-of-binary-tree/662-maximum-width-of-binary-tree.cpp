@@ -33,7 +33,6 @@ public:
             if(curr->right)
                 v.push_back({curr->right, 2*lvl + 2, depth+1});
             if(depth!=currdepth) {
-                // cout<<low<<" "<<high<<endl;
                 ans = max(ans, high - low + 1);
                 low = lvl;
                 currdepth = depth;
