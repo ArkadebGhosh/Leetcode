@@ -16,14 +16,10 @@ public:
     }
     
     bool func(int remaining, int sum, int k, vector<int> &nums, vector<int> &visited, int start) {
-        // cout<<remaining<<endl;
-        if(k == 1)
-            return true;
-        if(start>=nums.size()) {
-            // cout<<"triggered: "<<remaining<<endl;
+        if(start>=nums.size())
             return false;
-        }
-            
+        if(k == 1)
+            return true;            
         if(remaining == 0)
             return func(sum, sum, k-1, nums, visited, 0);
         for(int i = start; i<nums.size(); i++) {
