@@ -10,18 +10,11 @@ public:
                 freq[i] = freq[i-1];
                 freq[i][s[i] - 'a'] = freq[i-1][s[i] - 'a'] + 1;
             }
-                
         }
         
-        // for(int i = 0; i<l; i++) {
-        //     for(int j = 0; j<26; j++)
-        //         cout<<freq[i][j]<<" ";
-        //     cout<<endl;
-        // }
         int splits = 0;
         for(int i = 1; i<l; i++) {
             vector<int> zeros(26, 0);
-            // cout<<unique(freq[l-1] , freq[i-1])<<" "<<unique(freq[i-1], zeros)<<endl;
             if(unique(freq[l-1] , freq[i-1]) == unique(freq[i-1], zeros))
                 ++splits;
         }
