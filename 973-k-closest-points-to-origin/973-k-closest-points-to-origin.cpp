@@ -9,9 +9,8 @@ public:
     vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
         priority_queue<pair<lli, pair<int,int>>> pq;
         for(auto &point: points) {
-            if(pq.size() < k) {
+            if(pq.size() < k)
                 pq.push({distance(point), {point[0], point[1]}});
-            }
             else {
                 lli dis = distance(point);
                 if(dis < pq.top().first) {
