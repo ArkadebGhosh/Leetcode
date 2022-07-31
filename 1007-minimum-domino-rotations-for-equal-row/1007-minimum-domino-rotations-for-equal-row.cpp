@@ -9,17 +9,14 @@ public:
         for(int i = 0; i<n; i++) {
             ftop[tops[i]]++;
             fbottom[bottoms[i]]++;
-            if(valdec == -1 && tops[i] == bottoms[i]) {
+            if(tops[i] == bottoms[i]) {
                 ++same;
-                valdec = tops[i];
+                if(valdec == -1)
+                    valdec = tops[i];
+                else if(tops[i] != valdec)
+                    return -1;
             }
-            else if(tops[i] == bottoms[i] && tops[i]!=valdec)
-                return -1;
-            else if(tops[i] == bottoms[i])
-                ++same;
         }
-        
-        // cout<<valdec<<" "<<same<<endl;
         
         if(valdec!=-1) {
             if(ftop[valdec] + fbottom[valdec] - same == n)
