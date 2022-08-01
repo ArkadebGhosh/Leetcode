@@ -11,28 +11,14 @@ public:
         for(int i = 0; i<s.size(); i++) {
             if(included.count(s[i]))
                 continue;
-            if(st.empty()) {
-                st.push(s[i]);
-                included.insert(s[i]);
-                continue;
-            }
-            char top = st.top();
-            // cout<<top<<" "<<s[i]<<endl;
-            if(top < s[i]) {
+            if(st.empty() || st.top() < s[i]) {
                 st.push(s[i]);
                 included.insert(s[i]);
             }
-            
             else {
-                while (!st.empty() && st.top() > s[i]) {
-                    int pos = lastpos[st.top()];
-                    if(pos>i) {
-                        // cout<<top<<" erased"<<endl;
-                        included.erase(st.top());
-                        st.pop();
-                    }
-                    else
-                        break;
+                while (!st.empty() && st.top() > s[i] && lastpos[st.top()] > i) {
+                    included.erase(st.top());
+                    st.pop();
                 }
                 st.push(s[i]);
                 included.insert(s[i]);
