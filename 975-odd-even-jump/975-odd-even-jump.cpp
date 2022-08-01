@@ -23,11 +23,8 @@ public:
         vector<pair<int, int>> arr2;
         for(int i = 0; i<n; i++)
             arr2.push_back({arr[i], i});
-        
+
         sort(arr2.begin(), arr2.end(), comp1);
-        // for(auto &it: arr2)
-        //     cout<<it.first<<","<<it.second<<" ";
-        // cout<<endl;
         vector<int> odd_dest(n,-1);
         vector<int> even_dest(n,-1);
         stack<pair<int,int>> st, st2;
@@ -49,14 +46,7 @@ public:
             st2.push(arr2[n-i-1]);
         }
         int ans = 0;
-//         for(auto &it: odd_dest)
-//             cout<<it<<" ";
-//         cout<<endl;
-        
-//         for(auto &it: even_dest)
-//             cout<<it<<" ";
-//         cout<<endl;
-        
+
         for(int i = n-2; i>=0; i--) {
             int oddjump = odd_dest[i];
             if(oddjump != -1)
