@@ -16,12 +16,7 @@ public:
                 newpick = i;
                 ++currans;
             }
-            else if(oldpick == -1) {
-                oldpick = newpick;
-                newpick = i;
-                ++currans;
-            }
-            else if(fruits[i] == fruits[oldpick]) {
+            else if(oldpick == -1 || fruits[i] == fruits[oldpick]) {
                 oldpick = newpick;
                 newpick = i;
                 ++currans;
