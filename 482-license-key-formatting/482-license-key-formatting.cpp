@@ -9,10 +9,7 @@ public:
                 continue;
             if(c!=0 && c%k == 0)
                 ans+='-';
-            if(s[i]>=97 && s[i]<=122)
-                ans+=s[i]-32;
-            else
-                ans+=s[i];
+            ans += toupper(s[i]);
             ++c;
         }
         reverse(ans.begin(), ans.end());
