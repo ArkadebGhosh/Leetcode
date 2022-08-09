@@ -18,7 +18,7 @@ public:
             while(!isValid(freq, winsize, k)) {
                 freq[s[start] - 'A']--;
                 start++;
-                winsize = i - start + 1;
+                winsize--;
             }
             ans = max(ans, winsize);
         }
