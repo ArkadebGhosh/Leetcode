@@ -6,14 +6,11 @@ public:
     
     int intersectionSizeTwo(vector<vector<int>>& intervals) {
         sort(intervals.begin(), intervals.end(), end);
-        
         int low = intervals[0][1]-1;
         int high = intervals[0][1];
-        
         int s = 2;
         int n = intervals.size();
         for(int i = 1; i<n;i++) {
-            // cout<<low<<" "<<high<<endl;
             if(intervals[i][0] <= low)
                 continue;
             else if(intervals[i][0] > high) {
