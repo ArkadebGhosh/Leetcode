@@ -7,23 +7,18 @@ public:
         int high = nums[n-1] - nums[0];
         while(low <= high) {
             int req_diff = (low + high)/2;
-            
             int start = 0;
-            int end = 1;
             int count_pairs = 0;
-            for(; end<n; end++) {
-                while(nums[end] - nums[start] > req_diff) {
+            for(int end = 1; end<n; end++) {
+                while(nums[end] - nums[start] > req_diff)
                     ++start;
-                }
                 if(start<end)
                 count_pairs+=(end-start);
             }
-            if(count_pairs < k) {
+            if(count_pairs < k)
                 low = req_diff + 1;
-            }
-            else {
+            else 
                 high = req_diff-1;
-            }
         }
         return low;
     }
