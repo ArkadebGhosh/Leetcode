@@ -4,9 +4,6 @@ public:
         //Try to make 0 to n gardens full, find corresponding max partial
         int n = flowers.size();
         sort(flowers.begin(), flowers.end());
-        // for(auto &it: flowers)
-        //     cout<<it<<" ";
-        // cout<<endl;
         vector<long long> prefix(n, 0);
         prefix[0] = flowers[0];
         for(int i = 1; i<n; i++)
@@ -14,7 +11,6 @@ public:
         long long remaining = newFlowers;
         long long maxBeauty = 0;
         int fullupto = n;
-        // cout<<newFlowers<<" "<<target<<" "<<full<<" "<<partial<<endl;
         for(int i = n; i>=1; i--) {
             if(flowers[i-1] >= target) {
                 maxBeauty = max(maxBeauty, maxBeauty + full);
@@ -23,11 +19,8 @@ public:
             }
             if(i<n && flowers[i] < target)
                 remaining -= (target - flowers[i]);
-            // cout<<"*************************************"<<endl;
-            // cout<<i<<" "<<maxBeauty<<" "<<flowers[i]<<endl;
             if(remaining < 0)
                 break;
-            // Guess for max partial value
             long long low = 0;
             long long high = target - 1;
             while(low <= high) {
@@ -38,23 +31,18 @@ public:
                     required = guess * n - prefix[n-1];
                 else
                     required = guess * modify_till -(prefix[modify_till] - flowers[modify_till]);
-                // cout<<guess<<" "<<modify_till<<" "<<required<<" "<<remaining<<endl;
-                if(required > remaining) {
+                if(required > remaining)
                     high = guess - 1;
-                }
-                else {
+                else 
                     low = guess + 1;
-                }
             }
-            // cout<<"Max partial: "<<high<<endl;
-            maxBeauty = max(maxBeauty, (long long) (n-i) * full + high * partial);      
-            // cout<<"MaxBeauty: "<<maxBeauty<<endl;
+            maxBeauty = max(maxBeauty, (long long) (n-i) * full + high * partial);     
         }
         long long allfull = 0;
-        for(int i = 0; i<flowers.size(); i++) {
-            if(flowers[i] >= target)
+        for(auto &it: flowers) {
+            if(it >= target)
                 break;
-            allfull += (target - flowers[i]);
+            allfull += (target - it);
         }
         if(allfull <= newFlowers)
             return max(maxBeauty, (long long)n * full);
