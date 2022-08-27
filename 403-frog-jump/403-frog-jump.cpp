@@ -13,18 +13,14 @@ public:
     
     int check(vector<int> &stones, int start, int jump, vector<vector<int>> &memo, unordered_map<int, int> &stone_index) {
         
-        // cout<<start<<" "<<jump<<endl;
         if(memo[start][jump] != -1)
             return memo[start][jump];
         
         if(jump == 0) {
             memo[start][jump] = 0;
-            // cout<<"***"<<endl;
             return 0;
         }
-        
         int nextstone = stones[start]+jump;
-        // cout<<"Nextstone: "<<nextstone<<endl;
         int nextindex = -1;
         if(stone_index.count(nextstone)) {
             nextindex = stone_index[nextstone];
@@ -38,7 +34,6 @@ public:
                 || check(stones, nextindex, jump+1, memo, stone_index)) ? 1 : 0;
             return memo[start][jump];
         }
-        // cout<<"Stones doesnt exists for "<<start<<" "<<jump<<" "<<nextstone<<endl;
         memo[start][jump] = 0;
         return 0;
     }
