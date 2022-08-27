@@ -2,7 +2,7 @@ class Solution {
 public:
     bool canCross(vector<int>& stones) {
         int n = stones.size();
-        vector<vector<int>> memo(n, vector<int>(2001, -1));
+        vector<vector<int>> memo(n, vector<int>(n+1, -1));
         unordered_map<int, int> stone_index;
         for(int i = 0; i<stones.size(); i++) {
             stone_index[stones[i]] = i;
