@@ -10,12 +10,6 @@ public:
         for(int i = 0; i<n; i++)
             arr.push_back({efficiency[i], speed[i]});
         sort(arr.begin(), arr.end(), comp);
-        
-        // for(auto &it: arr) {
-        //     cout<<it.first<<","<<it.second<<" ";
-        // }
-        // cout<<endl;
-        
         priority_queue<int, vector<int>, greater<int>> pq;
         lli ans = 0;
         lli sum = 0;
@@ -36,16 +30,7 @@ public:
                 }
                 --j;
             }
-            
-            
-            // for(auto &it: pq) {
-            //     cout<<it<<" ";
-            // }
-            // cout<<endl;
-            
-            // cout<<sum<<","<<arr[i].first<<endl;
-            
-            ans = max(ans, ((lli)sum * (lli) arr[i].first));
+            ans = max(ans, sum * arr[i].first);
             i = j;
         }
         return (int)(ans%MOD);
