@@ -13,13 +13,10 @@ public:
             else
                 ++zeroes;
         }
-        
         if(zeroes%2)
             return {};
-
         int count = zeroes;
         vector<int> ans(zeroes/2, 0);
-        
         for(int i = 0; i<n; i++) {
             if(changed[i] == 0 || !m.count(changed[i]) || m[changed[i]] == 0)
                 continue;
