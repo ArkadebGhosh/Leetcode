@@ -1,9 +1,6 @@
 class Solution {
     
 public:
-    struct data {
-        int start, end, pos;
-    };
     
     int maximumScore(vector<int>& nums, vector<int>& multipliers) {
         int n = nums.size();
