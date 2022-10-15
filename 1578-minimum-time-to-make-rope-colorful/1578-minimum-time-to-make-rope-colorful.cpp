@@ -12,11 +12,6 @@ public:
                 maxtime = max(maxtime, neededTime[end]);
                 ++end;
             }
-            else if(end - start <= 1) {
-                start = end;
-                maxtime = INT_MIN;
-                sum = 0;
-            }
             else {
                 // cout<<start<<" "<<end<<" "<<sum<<" "<<maxtime<<endl;
                 ans += (sum - maxtime);
