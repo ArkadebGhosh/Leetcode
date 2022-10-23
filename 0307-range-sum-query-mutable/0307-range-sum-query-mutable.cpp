@@ -10,23 +10,12 @@ public:
         size = 4*n;
         seg = vector<int>(size, INT_MIN);
         arr = nums;
-        
-        // for(int i = 0; i<arrsize; i++)
-        //     cout<<arr[i]<<" ";
-        // cout<<endl;
-        
         buildtree(seg, arr, 0, 0, arrsize-1);
-        
-        // for(int i = 0; i<size; i++)
-        //     cout<<seg[i]<<" ";
-        // cout<<endl;
     }
     
     int buildtree(vector<int> &seg, vector<int> &arr, int root, int left, int right) {
-        if(left == right) {
-            // cout<<root<<" "<<left<<" "<<arr[left]<<endl;
+        if(left == right) 
             seg[root] = arr[left];
-        }
         else {
             int mid = (left + right)/2;
             seg[root] = buildtree(seg, arr, 2*root+1, left, mid) + buildtree(seg, arr, 2*root+2, mid+1, right);
@@ -38,9 +27,6 @@ public:
         int diff = val - arr[index];
         arr[index] = val;
         updatetree(seg, diff, index, 0, 0, arrsize-1);
-        // for(int i = 0; i<size; i++)
-        //     cout<<seg[i]<<" ";
-        // cout<<endl;
     }
     
     void updatetree(vector<int> &seg, int diff, int index, int root, int left, int right) {
@@ -62,7 +48,6 @@ public:
     }
     
     int findRoot(int root, int left, int right, int low, int high) {
-        // cout<<root<<" "<<left<<" "<<right<<" "<<low<<" "<<high<<endl;
         if(root >= size)
             return 0;
         if(left <= low && right >= high) {
