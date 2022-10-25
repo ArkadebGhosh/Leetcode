@@ -4,24 +4,14 @@ public:
     RangeModule() {
         m.clear();
     }
-    void print() {
-        // for(auto &it: m) {
-        //     cout<<"("<<it.first<<":"<<it.second<<") ";
-        // }
-        // cout<<endl;
-        return;
-    }
     
     void addRange(int left, int right) {
-        // cout<<"Added: "<<left<<" "<<right<<endl;
         if(m.size() == 0) {
             m[left] = right - 1;
-            print();
             return;
         }            
         removeRange(left, right);
         --right;
-        // print();
         map<int, int>:: iterator it, it2;
         it = m.lower_bound(left);
         it2 = it;
@@ -32,7 +22,6 @@ public:
             --it;
             int low = (*it).first;
             int high = (*it).second;
-            // cout<<low<<" "<<high<<endl;
             if(high == left-1) {
                 m[low] = max(high, right);
                 left = low;
@@ -41,22 +30,17 @@ public:
                 m[left] = right;
             }
         }
-        if(it2 == m.end()) {
-            print();
+        if(it2 == m.end())
             return;
-        }
-            // return;
+
         if((*it2).first == right+1 ) {
             m[left] = (*it2).second;
             m.erase((*it2).first);
         }
-        print();
     }
     
     bool queryRange(int left, int right) {
-        // cout<<"Query: "<<left<<" "<<right<<endl;
         --right;
-        print();
         map<int, int>:: iterator it = m.lower_bound(left);
         if(((*it).first) == left && ((*it).second) >= right) {
             return true;
@@ -73,7 +57,6 @@ public:
     }
     
     void removeRange(int left, int right) {
-        // cout<<"Removed: "<<left<<" "<<right<<endl;
         if(m.size() == 0)
             return;
         --right;
@@ -84,34 +67,27 @@ public:
             int low = (*it).first;
             int high = (*it).second;
             ++it;
-            // cout<<"Erased "<<low<<" "<<high<<endl;
             if(low > right)
                 break;
-            if(high <= right) {
+            if(high <= right) 
                 m.erase(low);
-            }
             else if(high > right) {
                 m.erase(low);
                 m[right+1] = high;
             }
-            // ++it;
         }
         it2 = m.lower_bound(left);
-        if(it2 == m.begin()) {
-            print();
+        if(it2 == m.begin()) 
             return;
-        }
-            // return;
         --it2;
         int low = (*it2).first;
         int high = (*it2).second;
-        if(high >= left) {
+        if(high >= left) 
             m[low] = left - 1;
-        }
-        if(high > right) {
+
+        if(high > right) 
             m[right+1] = high;
-        }
-        print();
+        
     }
 };
 
