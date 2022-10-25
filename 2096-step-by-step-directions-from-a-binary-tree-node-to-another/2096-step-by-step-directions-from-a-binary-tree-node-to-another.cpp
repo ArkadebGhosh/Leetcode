@@ -11,29 +11,12 @@
  */
 class Solution {
 public:
-    void print(vector<int> &v) {
-        for(auto &it: v)
-            cout<<it<<" ";
-        cout<<endl;
-        return;
-    }
-    
-    void print(vector<char> &v) {
-        for(auto &it: v)
-            cout<<it<<" ";
-        cout<<endl;
-        return;
-    }
     string getDirections(TreeNode* root, int startValue, int destValue) {
         vector<char> dir1, dir2;
         vector<int> path1, path2;
         bool found1 = false, found2 = false;
         path(root, startValue, dir1, path1, found1);
         path(root, destValue, dir2, path2, found2);
-        // print(dir1);
-        // print(path1);
-        // print(dir2);
-        // print(path2);
         unordered_set<int> s;
         for(auto &it: path1)
             s.insert(it);
