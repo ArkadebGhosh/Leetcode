@@ -11,8 +11,7 @@ public:
         }
         
         int swaps = 0;
-        swaps += xy/2;
-        swaps += yx/2;
+        swaps = xy/2 + yx/2;
         xy = xy%2;
         yx = yx%2;
         
