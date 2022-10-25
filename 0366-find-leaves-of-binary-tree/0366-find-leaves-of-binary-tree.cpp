@@ -12,9 +12,8 @@
 class Solution {
 public:
     vector<vector<int>> findLeaves(TreeNode* root) {
-        unordered_map<TreeNode*, int> m;
         vector<vector<int>> ans(100);
-        height(root, m, ans);
+        height(root, ans);
         vector<vector<int>> ret;
         for(auto &v: ans) {
             if(v.size()>0)
@@ -23,13 +22,12 @@ public:
         return ret;
     }
     
-    int height(TreeNode *root, unordered_map<TreeNode*, int> &m, vector<vector<int>> &ans) {
+    int height(TreeNode *root, vector<vector<int>> &ans) {
         if(root == NULL)
             return 0;
-        int leftheight = height(root->left, m, ans);
-        int rightheight = height(root->right, m, ans);
+        int leftheight = height(root->left, ans);
+        int rightheight = height(root->right, ans);
         int height = 1 + max(leftheight, rightheight);
-        m[root] = height;
         ans[height].push_back(root->val);
         return height;
     }
