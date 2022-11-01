@@ -21,24 +21,20 @@ public:
                 curr->link[ch - 'a'] = newNode;
             }
             curr = curr->link[ch - 'a'];
-            if(i== word.size()-1) {
-                curr->end = true;
-            }
         }
+        curr->end = true;
     }
     
     bool search(string word) {
         struct Node *curr = root;
         for(int i = 0; i<word.size(); i++) {
             char ch = word[i];
-            if(curr->link[ch - 'a'] ==  NULL) {
+            if(curr->link[ch - 'a'] ==  NULL) 
                 return false;
-            }
             curr = curr->link[ch - 'a'];
-            if(i == word.size()-1 && curr->end == true) {
-                return true;
-            }
         }
+        if(curr->end == true)
+            return true;
         return false;
     }
     
@@ -46,9 +42,8 @@ public:
         struct Node *curr = root;
         for(int i = 0; i<word.size(); i++) {
             char ch = word[i];
-            if(curr->link[ch - 'a'] ==  NULL) {
+            if(curr->link[ch - 'a'] ==  NULL)
                 return false;
-            }
             curr = curr->link[ch - 'a'];
         }
         return true;
