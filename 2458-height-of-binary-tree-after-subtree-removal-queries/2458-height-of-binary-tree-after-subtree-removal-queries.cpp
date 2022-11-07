@@ -13,15 +13,10 @@ class Solution {
 public:
     vector<int> treeQueries(TreeNode* root, vector<int>& queries) {
         unordered_map<int, int> ht;
-        unordered_map<int, priority_queue<pair<int, int>>> dp, dp2;
+        unordered_map<int, priority_queue<pair<int, int>>> dp;
         unordered_map<int, int> dpth;
         height(root, 0, ht, dp, dpth);
-        dp2 = dp;
         vector<int> ret;
-        // for(auto &it: dp2) {
-        //     cout<<"At depth = "<<it.first<<endl;
-        //     while(!it)
-        // }
         for(auto &query: queries) {
             int ans = ht[root->val] - ht[query];
             int depth = dpth[query];
@@ -42,18 +37,12 @@ public:
     }
     
     int height(TreeNode* root, int depth, unordered_map<int, int> &ht, unordered_map<int, priority_queue<pair<int, int>>> &dp, unordered_map<int, int> &dpth) {
-        if(root->left == NULL && root->right == NULL) {
-            dp[depth].push({1, root->val});
-            ht[root->val] = 1;
-            dpth[root->val] = depth;
-            return 1;
-        }
+        if(root == NULL) 
+            return 0;
         int lh = 0, rh = 0;
         dpth[root->val] = depth;
-        if(root->left)
-            lh = height(root->left, depth+1, ht, dp, dpth);
-        if(root->right)
-            rh = height(root->right, depth+1, ht, dp, dpth);
+        lh = height(root->left, depth+1, ht, dp, dpth);
+        rh = height(root->right, depth+1, ht, dp, dpth);
         ht[root->val] = 1 + max(lh, rh);
         dp[depth].push({ht[root->val], root->val});
         return ht[root->val];
