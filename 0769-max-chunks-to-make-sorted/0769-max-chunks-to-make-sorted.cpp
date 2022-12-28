@@ -7,10 +7,8 @@ public:
         int chunks = 0;
         for(int i = 0; i<n; i++) {
             high = max(high, arr[i]);
-            if(high == i) {
+            if(high == i)
                  ++chunks;
-                high = INT_MIN;
-            }
         }
         return chunks;
     }
