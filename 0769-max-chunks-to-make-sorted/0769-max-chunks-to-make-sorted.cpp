@@ -9,7 +9,6 @@ public:
         end = pos[0];
         int chunks = 0;
         while(start < n) {
-            // start == end
             if(arr[start] > end)
                 end = arr[start];
             ++start;
