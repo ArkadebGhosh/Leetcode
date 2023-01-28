@@ -3,7 +3,7 @@ public:
     bool canPartition(vector<int>& nums) {
         int sum = 0;
         int n = nums.size();
-        set<int> s;
+        unordered_set<int> s;
         for(auto &it: nums)
             sum+=it;
         if(sum%2==1)
